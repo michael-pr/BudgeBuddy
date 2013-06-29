@@ -1,0 +1,147 @@
+﻿@model BudgeBuddy.Models.LoginModel
+@{
+    ViewBag.Title = "BudgeBuddy";
+}
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;                
+    }
+}
+
+<script type="text/javascript">
+
+    $(this).ready(function () {
+
+        //Cool transtion thing, lol
+        //$("#createGoalItemBtn").mouseenter(function () {
+        //    $(".createItem").show(200);
+        //});
+
+        //$("#createGoalItemPanel").mouseleave(function () {
+        //    $(".createItem").hide(200);
+        //});
+
+        $("").click(function () {
+
+        });
+    });
+
+</script>
+
+<div id="main-content">
+@if (@User.Identity.IsAuthenticated)
+{
+	<div id="dashHeader">
+		<img src="~/Images/Logos/logo_black_trans_v3.png" alt="BudgeBuddy" class="logo"/>
+	</div>
+	<div id="dashBar">
+
+	</div>
+	<div id="quickStats">
+
+	</div>
+	<div id="createBar">
+        <div id="createGoalItemPanel">
+            <div id="createGoalItemBtn">
+		        <h3>Create a goal item</h3>
+            </div>
+            <div id="createItemPanel">
+		        <div id="goalBuyBtn" class="createItem">
+			        <h3>Buy</h3>
+		        </div>
+		        <div id="goalSaveBtn" class="createItem">
+			        <h3>Save</h3>
+		        </div>
+            </div>
+        </div>
+	</div>
+    <div id="createPanel">
+        s
+    </div>
+	<div id="goalList">
+		<ul>
+			<li class="goalItem">
+				<div class="goalItem_Priority">
+					<p>1</p>
+				</div>
+				<div class="goalItem_Amount">
+					<p>($600)</p>
+				</div>
+				<div class="goalItem_Title">
+					<p>Buy an iPhone</p>
+				</div>
+				<div class="goalItem_Date">
+					<p>6 days</p>
+					<p>6/24/2013</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+	
+	
+	@*<header>
+		<h1>@ViewBag.Title</h1>
+	</header>
+    <p class="error" data-bind="text: error"></p>
+    <input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
+    <button data-bind="click: addTodoList">Add Todo list</button>
+
+    <section id="lists" data-bind="foreach: todoLists, visible: todoLists().length > 0">
+        <article class="todoList">
+            <header>
+                <form data-bind="validate: true">
+                    <input class="required" data-bind="value: title, selected: isEditingListTitle, blurOnEnter: true" />
+                </form>
+            </header>
+
+            <a href="#" class="deletelist" data-bind="click: $parent.deleteTodoList">X</a>
+
+            <ul data-bind="foreach: todos">
+                <li>
+                    <input type="checkbox" data-bind="checked: isDone" />
+                    <input class="todoItemInput" type="text" data-bind="value: title, disable: isDone, blurOnEnter: true" />
+                    <a href="#" data-bind="click: $parent.deleteTodo">X</a>
+                    <p class="error" data-bind="visible: errorMessage, text: errorMessage"></p>
+                </li>
+            </ul>
+
+            <form data-bind="submit: addTodo">
+                <input class="addTodo" type="text" data-bind="value: newTodoTitle, placeholder: 'Type here to add', blurOnEnter: true, event: { blur: addTodo }" />
+            </form>
+
+            <p class="error" data-bind="visible: errorMessage, text: errorMessage"></p>
+        </article>
+    </section>*@
+}
+else
+{
+	<div id="logregPanel">
+		<a href="~/Views/Home/Index"><img src="~/Images/Logos/logo_black_trans_v3.png" alt="BudgeBuddy" class="logo"/></a>
+		<div id="loginPanel">
+			@Html.Partial("_Login")
+			@*<section id="socialLoginPanel">
+				<h2>Log in using another service</h2>
+				@Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
+			</section>*@
+			<p>First time here? <a id="showRegister">Sign up</a></p>
+		</div>
+		<div id="registerPanel">
+			@Html.Partial("_Register")
+			<p>Already signed up? <a id="showLogin">Log in</a></p>
+		</div>
+	</div>
+}
+</div>
+
+@if (@User.Identity.IsAuthenticated)
+{
+    @section scripts {
+        @Scripts.Render("~/bundles/knockout")
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/todo")
+    }
+}

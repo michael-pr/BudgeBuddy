@@ -1,0 +1,28 @@
+﻿@model BudgeBuddy.Models.LoginModel
+
+@using (Html.BeginForm("JsonLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "loginForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>Log in Form</legend>
+        <ol>
+            <li>
+                @Html.TextBoxFor(m => m.UserName, new { autofocus = "autofocus", id = "loginName", @class = "txtBox", placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.PasswordFor(m => m.Password, new { @class = "txtBox", placeholder = "Password"  })
+                @Html.ValidationMessageFor(m => m.Password)
+            </li>
+            @*<li>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </li>*@
+            <li>
+                <input type="submit" value="Log in" class="btn"/>
+            </li>
+        </ol>
+        @Html.ValidationSummary() 
+    </fieldset>
+}

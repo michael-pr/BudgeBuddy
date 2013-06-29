@@ -1,0 +1,45 @@
+#goalList {
+	/*height:800px;*/
+	/*margin-top:20px;*/
+	width:100%;
+	overflow:hidden;
+}
+
+	#goalList ul {
+		height:100%;
+		width:100%;
+		list-style-type:none;
+		margin-top: 0 !important;
+		padding-left: 0 !important;
+		white-space:nowrap;
+	}
+
+	#goalList ul li {
+		height:60px;
+		background-color: #CCCCCC;
+		display:inline-block;
+		width:100%;
+        float:left;
+	}
+
+	#goalList ul li div {
+		float:left;
+		padding:10px 0 10px 0;
+		height: 40px;
+		vertical-align:middle;
+		line-height:40px;
+		width:25%;
+	}
+
+	#goalList ul li div p {
+		margin: 0 !important;
+	}
+
+.goalItem_Priority {
+	background-color: #CCCCCC;
+}
+
+.goalItem_Date {
+	line-height: 20px !important;
+	float: right !important;
+}

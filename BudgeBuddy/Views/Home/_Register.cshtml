@@ -1,0 +1,26 @@
+﻿@model BudgeBuddy.Models.RegisterModel
+
+@using (Html.BeginForm("JsonRegister", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { Id = "registerForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.TextBoxFor(m => m.UserName, new { id = "registerName", autofocus = "autofocus", @class = "txtBox", placeholder = "Email" })
+            </li>
+            <li>
+                @Html.PasswordFor(m => m.Password, new { @class = "txtBox", placeholder = "Password"  })
+            </li>
+            <li>
+
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "txtBox", placeholder = "Confirm password"  })
+            </li>
+            <li>
+                <input type="submit" value="Sign up and start saving" class="btn" />
+            </li>
+        </ol>
+        @Html.ValidationSummary()
+    </fieldset>
+}
