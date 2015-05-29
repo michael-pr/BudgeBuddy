@@ -1,2 +1,2 @@
 # BudgeBuddy
-Budgeting app project
+Budgeting app project.
